@@ -1,145 +1,91 @@
--- Gerado por Oracle SQL Developer Data Modeler 19.4.0.350.1424
---   em:        2020-03-17 17:26:46 BRT
---   site:      Oracle Database 11g
---   tipo:      Oracle Database 11g
+-- Lista 1
+-- Nome: Diego Santos Gonçalves                 Matricula: 20183012537
+--       Mariana Bulgarelli Alves dos Santos               20183000330
 
-
-
-CREATE TABLE departamento (
-    dnome                VARCHAR(100) NOT NULL,
-    dnumero              NUMERIC NOT NULL,
-    cpf_gerente          NUMERIC(11,0) NOT NULL,
-    data_inicio_gerente  DATE NOT NULL
+--1) Criação das tabelas
+-- Criação da tabela DEPARTAMENTO
+CREATE TABLE DEPARTAMENTO (
+    Nome_departamento                VARCHAR2(100) NOT NULL unique,
+    Numero_departamento              NUMBER NOT NULL,
+    Cpf_gerente                      NUMBER(11,0) unique,
+    Data_inicio_gerente              DATE NOT NULL,
+    constraint PK_DEPARTAMENTO primary key (Numero_departamento)
 );
 
-ALTER TABLE departamento ADD CONSTRAINT departamento_pk PRIMARY KEY ( dnumero );
-
-CREATE TABLE dependente (
-    fcpf             NUMERIC(11,0) NOT NULL,
-    nome_dependente  VARCHAR(30) NOT NULL,
-    sexo             VARCHAR(1),
-    datanasc         DATE NOT NULL,
-    parentesco       VARCHAR(30) NOT NULL
+--Criação da tabela Funcionário
+CREATE TABLE FUNCIONARIO (
+    Primeiro_nome           VARCHAR2(30) NOT NULL,
+    Nome_meio              VARCHAR2(30),
+    Ultimo_nome            VARCHAR2(30) NOT NULL,
+    Cpf                    NUMBER(11,0) NOT NULL,
+    Data_nascimento        DATE  NOT NULL,
+    Endereco               VARCHAR2(200) NOT NULL,
+    Sexo                   VARCHAR2(1) NOT NULL,
+    Salario                NUMBER(5,0) NOT NULL,
+    Cpf_supervisor         NUMBER(11,0),
+    Numero_departamento    NUMBER NOT NULL,
+    constraint PK_FUNCIONARIO primary key (Cpf),
+    constraint FK_FUNCIONARIO_FUNCIONARIO foreign key (Cpf_supervisor) references FUNCIONARIO ( cpf ),
+    constraint FK_FUNCIONARIO_DEPARTAMENTO foreign key (Numero_departamento) references DEPARTAMENTO (Numero_Departamento),
+    constraint CK_SALARIO check (Salario between 1000 and 10000 ),
+    constraint CK_SEXO check (Sexo = 'F' or Sexo = 'M')
 );
 
-ALTER TABLE dependente ADD CONSTRAINT dependente_pk PRIMARY KEY ( fcpf,
-                                                                  nome_dependente );
+-- Possivel equivoco de digitação dos valores limites de salário na Lista 1, entre 1000 e 10000 não é possivel a adição de nenhum funcionário
+Alter table FUNCIONARIO drop constraint CK_SALARIO;
+Alter table FUNCIONARIO add constraint CK_SALARIO check (Salario between 10000 and 100000 );
+
+--Adição da chave estrangeira de DEPARTAMENTO_FUNCIONARIO
+Alter table DEPARTAMENTO add constraint FK_DEPARTAMENTO_FUNCIONARIO foreign key (CPF_gerente) references FUNCIONARIO (Cpf);
 
 
-CREATE TABLE funcionario (
-    pnome           VARCHAR(30) NOT NULL,
-    minicial        VARCHAR(30),
-    unome           VARCHAR(30) NOT NULL,
-    cpf             NUMERIC(11,0) NOT NULL,
-    datanasc        DATE  NOT NULL,
-    endereco        VARCHAR(200) NOT NULL,
-    sexo            VARCHAR(1),
-    salario         NUMERIC(5,0) NOT NULL,
-    cpf_supervisor  NUMERIC(11,0),
-    dnr             NUMERIC NOT NULL
+-- Criação da tabela LOCALIZACOES_DEPARTAMENTO
+CREATE TABLE LOCALIZACOES_DEPARTAMENTO (
+    Numero_departamento           NUMBER NOT NULL references DEPARTAMENTO (Numero_departamento) on delete cascade,
+    Local_departamento            VARCHAR2(100) default 'Belo Horizonte' NOT NULL,
+    constraint PK_LOCALIZACOES_DEPARTAMENTO primary key (Numero_departamento)
 );
 
-ALTER TABLE funcionario ADD CONSTRAINT funcionario_pk PRIMARY KEY ( cpf );
+-- Vemos que a ausencia da chave primaria de Local_departamento gerou o erro de restrição exclusiva na inserção de dois dados com mesmo Numero_departamento
+Alter table LOCALIZACOES_DEPARTAMENTO drop constraint PK_LOCALIZACOES_DEPARTAMENTO;
+Alter table LOCALIZACOES_DEPARTAMENTO add constraint PK_LOCALIZACOES_DEPARTAMENTO primary key (Numero_departamento,Local_departamento);
 
-CREATE TABLE localizacao_dep (
-    dnumero  NUMERIC NOT NULL,
-    dlocal   VARCHAR(100) NOT NULL
+-- Criação da tabela PROJETO
+-- Ao tentarmos colocar como chave primaria o local do PROJETO, encontramos um problema na hora de referenciar a chave estrangeira de TRABALHA_EM
+-- ERRO: ORA-02270: não há chave exclusiva ou primária compatível para esta lista de colunas
+--       02270. 00000 -  "no matching unique or primary key for this column-list"
+-- Sendo assim decidimos por não colocar o Local_projeto como chave primária
+CREATE TABLE PROJETO (
+    Nome_projeto               VARCHAR2(50) NOT NULL,
+    Numero_projeto             NUMBER(2,0) NOT NULL,
+    Local_projeto              VARCHAR2(100) NOT NULL,
+    Numero_departamento        NUMBER NOT NULL,
+    constraint PK_PROJETO primary key (Numero_projeto),
+    constraint FK_PROJETO_DEPARTAMENTO foreign key (Numero_departamento) references DEPARTAMENTO (Numero_departamento)
 );
 
-ALTER TABLE localizacao_dep ADD CONSTRAINT localizacao_dep_pk PRIMARY KEY ( dnumero,
-                                                                            dlocal );
-
-CREATE TABLE projeto (
-    projnome    VARCHAR(50) NOT NULL,
-    projnumero  NUMERIC(2,0) NOT NULL,
-    projlocal   VARCHAR(100) NOT NULL,
-    dnum        NUMERIC NOT NULL
+-- Criação da tabela TRABALHA_EM
+CREATE TABLE TRABALHA_EM (
+    Cpf_do_funcionario   NUMBER(11,0) NOT NULL,
+    Numero_do_projeto    NUMBER(2,0) NOT NULL,
+    Horas                NUMBER(3,1),
+    constraint PK_TRABALHA_EM primary key (Cpf_do_funcionario, Numero_do_projeto),
+    constraint FK_TRABALHA_EM_FUNCIONARIO foreign key (Cpf_do_funcionario) references FUNCIONARIO (Cpf),
+    constraint FK_TRABALHA_EM_PROJETO foreign key (Numero_do_projeto) references PROJETO (Numero_projeto)
 );
 
-ALTER TABLE projeto ADD CONSTRAINT projeto_pk PRIMARY KEY ( projnumero );
 
-CREATE TABLE trabalha_em (
-    fcpf   NUMERIC(11,0) NOT NULL,
-    pnr    NUMERIC(2,0) NOT NULL,
-    horas  NUMERIC(3,1)
+-- Criação tabela DEPENDENTE
+CREATE TABLE DEPENDENTE (
+    Cpf_funcionario             NUMBER(11,0) NOT NULL references FUNCIONARIO (Cpf) on delete cascade, 
+    Nome_dependente             VARCHAR2(30) NOT NULL,
+    Sexo                        VARCHAR2(1),
+    Data_nascimento             DATE NOT NULL,
+    Parentesco                  VARCHAR2(30) NOT NULL,
+    constraint PK_DEPENDENTE primary key (Cpf_funcionario,Nome_dependente),
+    constraint CK_SEXO_DEPENDENTE check (Sexo = 'F' or Sexo = 'M'),
+    constraint CK_PARENTESCO_DEPENDENTE check (Parentesco  in	 ('Filho',	 'Filha',	 'Esposa',	'Esposa'))
 );
 
-ALTER TABLE trabalha_em ADD CONSTRAINT trabalha_em_pk PRIMARY KEY ( fcpf,
-                                                                    pnr );
-
-ALTER TABLE departamento
-    ADD CONSTRAINT departamento_funcionario_fk FOREIGN KEY ( cpf_gerente )
-        REFERENCES funcionario ( cpf );
-
-ALTER TABLE dependente
-    ADD CONSTRAINT dependente_funcionario_fk FOREIGN KEY ( fcpf )
-        REFERENCES funcionario ( cpf );
-
-ALTER TABLE funcionario
-    ADD CONSTRAINT funcionario_departamento_fk FOREIGN KEY ( dnr )
-        REFERENCES departamento ( dnumero );
-
-ALTER TABLE funcionario
-    ADD CONSTRAINT funcionario_funcionario_fk FOREIGN KEY ( cpf_supervisor )
-        REFERENCES funcionario ( cpf );
-
-ALTER TABLE localizacao_dep
-    ADD CONSTRAINT localizacao_dep_dep_fk FOREIGN KEY ( dnumero )
-        REFERENCES departamento ( dnumero );
-
-ALTER TABLE projeto
-    ADD CONSTRAINT projeto_departamento_fk FOREIGN KEY ( dnum )
-        REFERENCES departamento ( dnumero );
-
-ALTER TABLE trabalha_em
-    ADD CONSTRAINT trabalha_em_funcionario_fk FOREIGN KEY ( fcpf )
-        REFERENCES funcionario ( cpf );
-
-ALTER TABLE trabalha_em
-    ADD CONSTRAINT trabalha_em_projeto_fk FOREIGN KEY ( pnr )
-        REFERENCES projeto ( projnumero );
-
-
-
--- RelatÃ³rio do Resumo do Oracle SQL Developer Data Modeler: 
--- 
--- CREATE TABLE                             6
--- CREATE INDEX                             0
--- ALTER TABLE                             14
--- CREATE VIEW                              0
--- ALTER VIEW                               0
--- CREATE PACKAGE                           0
--- CREATE PACKAGE BODY                      0
--- CREATE PROCEDURE                         0
--- CREATE FUNCTION                          0
--- CREATE TRIGGER                           0
--- ALTER TRIGGER                            0
--- CREATE COLLECTION TYPE                   0
--- CREATE STRUCTURED TYPE                   0
--- CREATE STRUCTURED TYPE BODY              0
--- CREATE CLUSTER                           0
--- CREATE CONTEXT                           0
--- CREATE DATABASE                          0
--- CREATE DIMENSION                         0
--- CREATE DIRECTORY                         0
--- CREATE DISK GROUP                        0
--- CREATE ROLE                              0
--- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          0
--- CREATE MATERIALIZED VIEW                 0
--- CREATE MATERIALIZED VIEW LOG             0
--- CREATE SYNONYM                           0
--- CREATE TABLESPACE                        0
--- CREATE USER                              0
--- 
--- DROP TABLESPACE                          0
--- DROP DATABASE                            0
--- 
--- REDACTION POLICY                         0
--- 
--- ORDS DROP SCHEMA                         0
--- ORDS ENABLE SCHEMA                       0
--- ORDS ENABLE OBJECT                       0
--- 
--- ERRORS                                   0
--- WARNINGS                                 0
+alter table DEPENDENTE drop constraint CK_PARENTESCO_DEPENDENTE;
+alter table DEPENDENTE add constraint CK_PARENTESCO_DEPENDENTE check (Parentesco  in	 ('Filho',	 'Filha',	 'Marido',	'Esposa'));
