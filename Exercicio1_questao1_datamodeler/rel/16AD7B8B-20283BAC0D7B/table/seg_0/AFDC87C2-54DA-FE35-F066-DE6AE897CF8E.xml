@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AFDC87C2-54DA-FE35-F066-DE6AE897CF8E" name="CLIENTE">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:50:14 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CPF" id="0175BD59-FE19-D9BF-269E-3BF6998BDC04">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:51:10 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="278EDE14-D57F-7E01-3630-6B0627E126A8">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:51:56 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Endereco" id="583D2FB2-6FE4-7EDF-CD93-ADFED756E6B0">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:52:17 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Data_Nascimento" id="007DA701-0B35-6107-BE14-8B61492C286A">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:52:41 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4E6F7121-886C-FDFB-C190-AF1A76DF408D" name="CLIENTE_PK">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:51:56 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0175BD59-FE19-D9BF-269E-3BF6998BDC04"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

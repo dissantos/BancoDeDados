@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E7B2A504-0E2D-02D9-BA38-6A466952EA8B" name="Agencia">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:21:08 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Codigo" id="49CCA624-46D9-6741-AE2B-91216E584A15">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:24:25 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Gerente" id="A24463C2-4E21-B920-AA13-F1A4CC003A02">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:24:59 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cod_Banco" id="948169FA-1A03-1DD6-A67F-A06BED2D6E36">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:27:44 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BBEA591F-9A04-5D96-9FB9-8CDE9D766E55" referredColumn="452A1AF4-3653-A8F0-B08B-CB68634EE41C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0800A7A7-FA0D-68A2-16A5-DC3AFC626ABA" name="Agencia_PK">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:24:25 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49CCA624-46D9-6741-AE2B-91216E584A15"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D2453A9D-20D0-75EC-A445-A317478D1638" name="Agencia_Gerente_UN">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:26:50 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A24463C2-4E21-B920-AA13-F1A4CC003A02"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CE749ED2-AFD1-91EB-2384-B5F88A49CEFC" name="Agencia_Banco_FK">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:27:44 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao1_datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="948169FA-1A03-1DD6-A67F-A06BED2D6E36"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
