@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="31C5EEDD-1CEC-98DB-12C2-041EA9106B3B" name="Conta">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:36:32 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Cod_Agencia" id="7FD10BEF-BB4A-0B27-D573-F9D694120120">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:41:00 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3E27272-4553-C61F-396C-79C864366BD0" referredColumn="49CCA624-46D9-6741-AE2B-91216E584A15"/>
+</associations>
+</Column>
+<Column name="Cod_Banco" id="ACF6B695-6B5F-6865-E220-40547287FE15">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 19:06:54 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3E27272-4553-C61F-396C-79C864366BD0" referredColumn="948169FA-1A03-1DD6-A67F-A06BED2D6E36"/>
+</associations>
+</Column>
+<Column name="Numero" id="4C8F2A0F-E390-5102-4DC8-7FCDF9D8A73E">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:37:13 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CPF" id="BA7912FC-141C-60C2-CEC2-FDF4D179C2CD">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:37:41 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6ACFB8AA-2CC2-41CE-F0D3-E3D8FBEA0E31" referredColumn="0175BD59-FE19-D9BF-269E-3BF6998BDC04"/>
+</associations>
+</Column>
+<Column name="Saldo" id="CEF057E7-8E4B-08BE-69AE-BEC1A55E6E3C">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:38:04 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F8A88E33-D309-24C7-8244-4A1F7E612648" name="Conta_PK">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:41:32 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7FD10BEF-BB4A-0B27-D573-F9D694120120"/>
+<colUsage columnID="4C8F2A0F-E390-5102-4DC8-7FCDF9D8A73E"/>
+<colUsage columnID="ACF6B695-6B5F-6865-E220-40547287FE15"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F30EA435-811C-477F-A372-B7044C2C2BBE" name="Conta_Agencia_FK">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:41:00 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7FD10BEF-BB4A-0B27-D573-F9D694120120"/>
+<colUsage columnID="ACF6B695-6B5F-6865-E220-40547287FE15"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FCE4AAFC-634C-52F0-5B88-F234FC736944" name="Conta_CLIENTE_FK">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:54:54 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BA7912FC-141C-60C2-CEC2-FDF4D179C2CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="Conta_SALDO_CK" directorySegmentName="seg_0" id="C3DDE6F7-621E-83C2-E690-5C577DA00377">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:49:40 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<rule><![CDATA[SALDO >= 0]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

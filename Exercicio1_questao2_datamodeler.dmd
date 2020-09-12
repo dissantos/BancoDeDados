@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Exercicio1_questao2_datamodeler" id="40679E49-F4EA-5B63-2054-8B596E61613B" version="3.5">
+<createdBy>disan</createdBy>
+<createdTime>2020-09-11 18:13:38 UTC</createdTime>
+<ownerDesignName>Exercicio1_questao2_datamodeler</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>40679E49-F4EA-5B63-2054-8B596E61613B</designId>
+</OSDM_Design>
