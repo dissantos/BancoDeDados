@@ -1,7 +1,7 @@
 ```sql
 -- 1o Exercio em Sala de Aula de Lab BD I - 2 pontos - 04/09/2020
--- Nome: Diego Santos Goncalves        
--- Matricula: 20183000330
+-- Nome: Diego Santos Goncalves        Mariana Bulgarelli Alves dos Santos
+-- Matricula: 20183000330              20183000330
 
 --- 1) BD com Agencia com chave propria
 -- Caso existam tabelas antiga

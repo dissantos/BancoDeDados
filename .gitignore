@@ -1,5 +1,7 @@
 *.pdf
+*.md
 **/*.localz
 **/*.local
 **/*.git
 **/*.DS_Store
+.gitignore
